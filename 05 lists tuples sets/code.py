@@ -30,3 +30,6 @@ s.add("Bob")
 s.add("Bob")  # makes no sense, can't have duplicates
 print(s)
 
+# Create a tuple, called my_tuple, with a single value in it
+my_tuple = ('c',)
+
