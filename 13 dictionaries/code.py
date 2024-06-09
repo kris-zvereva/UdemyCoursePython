@@ -1,4 +1,4 @@
-friend_ages = {"Kris": 27,"Uta": 4, "Anne": 29}  # keys are int and str
+friend_ages = {"Kris": 27, "Uta": 4, "Anne": 29}  # keys are int and str
 friend_ages["Bob"] = 20
 
 print(friend_ages["Bob"])  # subscript notation, indexes won't work, need a key
@@ -27,4 +27,3 @@ else:
 
 attendance_values = student_attendance.values()
 print(sum(attendance_values) / len(attendance_values))
-
