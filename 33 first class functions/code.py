@@ -1,3 +1,8 @@
+# first class function is a function
+# that can be passed as an argument to another function,
+# and a value of this function becomes the value of this parameter
+
+
 def divide(dividend, divisor):
     if divisor == 0:
         raise ZeroDivisionError("divisor cant be 0")
