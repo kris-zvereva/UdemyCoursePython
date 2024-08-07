@@ -2,6 +2,7 @@ from unittest import TestCase
 from unittest.mock import patch
 from section3.blog import app
 from section3.blog.blog import Blog
+from section3.blog.post import Post
 
 
 class AppTest(TestCase):
@@ -45,3 +46,17 @@ class AppTest(TestCase):
         with patch('section3.blog.app.print_post') as mocked_print_post:
             app.print_posts(blog)
             mocked_print_post.assert_called_with(blog.posts[0])
+
+    def test_print_post(self):
+        post = Post('Post Title', 'Post Content')
+        expected_print = '''
+    == Post Title ==
+    
+    Post Content
+    
+'''
+        with patch('builtins.print') as mocked_print:
+            app.print_post(post)
+
+            mocked_print.assert_called_with(expected_print)
+
