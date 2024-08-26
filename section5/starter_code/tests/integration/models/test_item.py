@@ -14,6 +14,3 @@ class ItemTest(BaseTest):
             item.delete_from_db()
             self.assertIsNone(ItemModel.find_by_name('test'),
                               'found an item with a name {}, but expected not to'.format(item.name))
-
-
-

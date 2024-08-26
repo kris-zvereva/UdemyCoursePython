@@ -3,7 +3,7 @@ import os  # for access to environment variables
 from flask import Flask
 from flask_restful import Api
 
-from section5.starter_code.resources.item import Item
+from section5.starter_code.resources.item import Item, ItemList
 from section5.starter_code.resources.store import Store, StoreList
 
 
@@ -18,7 +18,7 @@ api = Api(app)  # created an api
 
 api.add_resource(Item, '/item/<string:name>')  # added resource and specified the endpoint structure
 api.add_resource(Store, '/store/<string:name>')
-# api.add_resource(ItemList, '/items')
+api.add_resource(ItemList, '/items')
 api.add_resource(StoreList, '/stores')
 
 if __name__ == '__main__':
