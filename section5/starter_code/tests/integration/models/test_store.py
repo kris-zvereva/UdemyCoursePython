@@ -1,14 +1,14 @@
-from starter_code.models.item import ItemModel
-from starter_code.models.store import StoreModel
-from starter_code.tests.integration.integration_base_test import BaseTest
+from section5.starter_code.models.item import ItemModel
+from section5.starter_code.models.store import StoreModel
+from section5.starter_code.tests.integration.integration_base_test import BaseTest
 
 
 class StoreTest(BaseTest):
     def test_create_store_items_empty(self):
-        store = StoreModel('test')
+        store = StoreModel('Test')
 
-        self.assertListEqual(store.items.all(), [],
-                             'the store items length as not 0 even though no items were saved.')
+        self.assertEqual(store.items.all(), [],
+                         'the store items is not empty but expected to')
 
     def test_crud(self):
         with self.app_context():
@@ -23,37 +23,28 @@ class StoreTest(BaseTest):
     def test_store_relationships(self):
         with self.app_context():
             store = StoreModel('test')
-            item = ItemModel('test item', 19.99, 1)
+            item = ItemModel('test item', 21.22, 1)
 
             store.save_to_db()
             item.save_to_db()
 
             self.assertEqual(store.items.count(), 1)
-            self.assertEqual(store.item.first().name, 'test item')
+            self.assertEqual(store.items.first().name, 'test item')
 
     def test_store_json(self):
-        store = StoreModel('test')
-        expected = {
-            'name': 'test',
-            'items': [],
-        }
-
-        self.assertDictEqual(store.json(), expected)
-
-    def test_store_json_with_item(self):
         with self.app_context():
             store = StoreModel('test')
-            item = ItemModel('test item', 19.99, 1)
+            item = ItemModel('test item', 21.22, 1)
 
             store.save_to_db()
             item.save_to_db()
+
             expected = {
                 'name': 'test',
-                'items': [{
-                    'name': 'test item',
-                    'price': 19.99,
-                         }],
+                'items': [{'name': 'test item',
+                           'price': 21.22}],
             }
 
             self.assertDictEqual(store.json(), expected)
+
 

@@ -7,12 +7,12 @@ and makes sure it is a new, blank database each time.
 """
 
 from unittest import TestCase
-from starter_code.app import app
-from starter_code.db import db
+from section5.starter_code.app import app
+from section5.starter_code.db import db
 
 
 class BaseTest(TestCase):
-    SQLALCHEMY_DATABASE_URI = "sqlite://"
+    SQLALCHEMY_DATABASE_URI = "sqlite:///"
 
     def setUp(self):
         # db exists
