@@ -1,8 +1,8 @@
 from section7.startercode.models.user import UserModel
-from section7.startercode.tests.base_test import BaseTest
+from section7.startercode.tests.unit.unit_base_test import UnitBaseTest
 
 
-class TestUser(BaseTest):
+class TestUser(UnitBaseTest):
     def test_create_user(self):
         user = UserModel('test', 'password')
 

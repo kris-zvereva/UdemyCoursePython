@@ -1,8 +1,8 @@
 from section7.startercode.models.store import StoreModel
-from section7.startercode.tests.base_test import BaseTest
+from section7.startercode.tests.unit.unit_base_test import UnitBaseTest
 
 
-class TestStore(BaseTest):
+class TestStore(UnitBaseTest):
     def test_create_store(self):
         store = StoreModel('test')
 

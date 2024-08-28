@@ -19,7 +19,8 @@ class BaseTest(TestCase):
         app.config['SQLALCHEMY_DATABASE_URI'] = BaseTest.SQLALCHEMY_DATABASE_URI
         app.config['DEBUG'] = False
         with app.app_context():
-            db.init_app(app)
+            if "sqlalchemy" not in app.extensions:  # for getting rid of runtime error i dont know how else to fix
+                db.init_app(app)
 
     def setUp(self):
         with app.app_context():
