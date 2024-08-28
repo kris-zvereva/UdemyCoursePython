@@ -1,8 +1,8 @@
 from section7.startercode.models.item import ItemModel
-from section7.startercode.tests.unit.unit_base_test import UnitBaseTest
+from section7.startercode.tests.base_test import BaseTest
 
 
-class TestItem(UnitBaseTest):
+class TestItem(BaseTest):
     def test_create_item(self):
         item = ItemModel('test', 19.99, 1)
 
