@@ -2,6 +2,8 @@ from behave import *
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 
+from section10.tests.acceptance.page_model.blog_page import BlogPage
+from section10.tests.acceptance.page_model.home_page import HomePage
 
 use_step_matcher('re')
 
@@ -9,22 +11,24 @@ use_step_matcher('re')
 def step_impl(context):
     service = Service('/Users/kristinazvereva/chromedriver')
     context.browser = webdriver.Chrome(service=service)
-    context.browser.get('http://127.0.0.1:5000')
+    page = HomePage(context.browser)
+    context.browser.get(page.url)
 
 @given('I am on the blog page')
 def step_impl(context):
     service = Service('/Users/kristinazvereva/chromedriver')
     context.browser = webdriver.Chrome(service=service)
-    context.browser.get('http://127.0.0.1:5000/blog')
+    page = BlogPage(context.browser)
+    context.browser.get(page.url)
 
 @then('I am on the blog page')
 def step_impl(context):
-    expected_url = 'http://127.0.0.1:5000/blog'
+    expected_url = BlogPage(context.browser).url
     assert context.browser.current_url == expected_url
 
 @then('I am on the homepage')
 def step_impl(context):
-    expected_url = 'http://127.0.0.1:5000/'
+    expected_url = HomePage(context.browser).url
     assert context.browser.current_url == expected_url
 
 
