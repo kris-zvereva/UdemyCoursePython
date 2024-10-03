@@ -9,4 +9,4 @@ class HomePage(BasePage):
 
     @property
     def blog_link(self):
-        return self.driver.find_element(*HomePageLocators.NAVIGATION_LINK)
+        return self.browser.find_element(*HomePageLocators.NAVIGATION_LINK)

@@ -12,3 +12,7 @@ class BasePage:
     @property
     def title(self):
         return self.browser.find_element(*BasePageLocators.TITLE)
+
+    @property
+    def navigation(self):
+        return self.browser.find_elements(*BasePageLocators.NAV_LINKS)
